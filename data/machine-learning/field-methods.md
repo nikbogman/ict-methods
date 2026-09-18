@@ -1,0 +1,14 @@
+# Field methods for machine learning
+
+For Machine Learning projects, the existing Field methods can be applied as follows:
+
+- **Document analysis.** For ML projects it is most important to understand the data you will be working with. Any document explaining the data or the processes that produce the data could aid in this understanding. You also need to understand the purpose of your predictive model — in what way will the predictions be used to support a certain workflow or process? Documentation describing the workflow or process, and about the existing IT environment in which your ML application/module needs to operate, is a good source to start from.
+- **Domain modelling.** Domain modelling can help in understanding the data you will be working with.
+- **Explore user requirements.** Although you still need to define user requirements for your end solution (the front-end that serves your model predictions to an end-user), you also need to focus on the data requirements: which training data is needed to train a good predictive model for unseen data? For this you also need to discuss with the stakeholders in an iterative process, because end users or domain experts are the ones that understand the data and can help you find incorrect or missing data.
+- **Focus group.** With ML solutions the system is self-learning. For certain applications it is important to make the predictions or decisions of this type of model explainable. A focus group might help you discover if your solution will have trust issues for end users.
+- **Interview.** Next to end users and other stakeholders you probably also need to interview IT experts or data scientists to get expert knowledge for your project.
+- **Observation.** This is a good way to find out which steps in a workflow would benefit from automated predictions or decision support. Ask people which rules they are using in their head to complete their tasks/steps, which data they use and if they in any way need to pre-process the data.
+- **Problem analysis.** Also for ML projects there is always a problem you are trying to solve. Understanding the problem/opportunity helps in deciding when your model is "good enough" and with all other decisions you have to make during the ML project.
+- **Stakeholder analysis.** To get a good understanding of your project you need to get input from all people involved or influenced by the project outcome. You will usually only deliver a prototype but do not forget to include roles like maintenance/devops who might need to run your solution in production in the future.
+- **Survey.** You might use surveys to reach out to a larger group of people at the same time (compared to interview).
+- **Task analysis.** You should focus on the data used/processed and any steps that could benefit from decision support or automated predictions. What are the rules currently used for making the decision or prediction?
