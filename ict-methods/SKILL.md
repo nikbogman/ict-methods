@@ -1,17 +1,33 @@
 ---
 name: ict-methods
-description: Validates a research methodology against the HBO-ICT research methods standard (ictresearchmethods.nl) — checks that chosen methods are recognized, fit their research phase, and have their prerequisites covered.
+description: Checks an HBO-ICT research methodology against the ictresearchmethods.nl standard, or recommends which method(s) fit a research question or activity — validates chosen methods (recognized, phase fit, prerequisites) and/or suggests methods when none are chosen yet.
 disable-model-invocation: true
 ---
 
 # /ict-methods
 
-Checks a research methodology against `references/`, the official HBO-ICT method catalogue mirrored from [ictresearchmethods.nl](https://ictresearchmethods.nl), grounded in the [DOT framework](references/dot-framework.md) (domains, trade-off scales, strategies) and its [research patterns](references/research-pattern-navigator.md). Each file in `references/methods/<category>/<method>.md` is one canonical method with YAML frontmatter (`name`, `why`, `how`, `practice`, `ingredients`, `category`, `phases`, `scales`).
+Works against `references/`, the official HBO-ICT method catalogue mirrored from [ictresearchmethods.nl](https://ictresearchmethods.nl), grounded in the [DOT framework](references/dot-framework.md) (domains, trade-off scales, strategies) and its [research patterns](references/research-pattern-navigator.md). Each file in `references/methods/<category>/<method>.md` is one canonical method with YAML frontmatter (`name`, `why`, `how`, `practice`, `ingredients`, `category`, `phases`, `scales`).
 
 **Categories / DOT strategies** (research setting): `field`, `lab`, `library`, `showroom`, `workshop`, `extra`.
 **Phases** (research stage): `problem-definition`, `analysis`, `design`, `realisation`, `evaluation`, plus the cross-cutting `machine-learning`.
 
-## Steps
+## Pick a mode
+
+- The user names method(s) they've picked or are using, per phase → **Validate**.
+- The user describes a research question or activity without naming a method → **Recommend**.
+- Both at once (e.g. "does X fit, or is there something better?") → run Validate on what's named, then Recommend for the gap.
+
+## Recommend
+
+1. **Get the question or activity**, and if given, the phase and whether it's ML-related (a component that learns from data — this changes step 2). If the phase is missing, infer the closest fit from the question's wording rather than blocking on it; state the inferred phase in the report.
+
+2. **Check for a matching pattern first.** If the question spans more than a single research step (it implies a sequence, e.g. "how do I get from vague stakeholder wishes to a validated solution?"), match it against `references/research-pattern-navigator.md`'s question table. A hit means the recommendation is a pattern, not a single method — read the matching `references/patterns/*.md` file and its How/When/Risks sections.
+
+3. **Rank candidate methods.** Whether or not a pattern matched (a pattern's steps still resolve to individual methods), search `references/methods/**/*.md` (or, if ML-related, `references/machine-learning.md` and the matching `references/machine-learning/<category>-methods.md` first) for methods whose `why`/`practice` address the question's intent. Filter to methods whose `phases` includes the (given or inferred) phase. Rank by fit using the `scales` frontmatter against what the question needs — e.g. a question about validating a hunch needs certainty/data, one about generating options needs overview/inspiration.
+
+4. **Report.** Top pick (or the matched pattern's method sequence) with the `why` it fits, its `ingredients` (what the user needs to have ready), and up to 2 runner-up alternatives with a one-line reason each was ranked lower.
+
+## Validate
 
 1. **Get the methodology.** Use what the user already described in this conversation, or a file/paste they point to. It must name, per research phase: the method(s) chosen and why. If any phase has no method named, ask the user for it before continuing. Note whether the project is ML-related (a component that learns from data) — this changes step 2 — and whether the named methods span more than one strategy/category combined across phases, rather than a single method in isolation — this triggers step 6.
 
