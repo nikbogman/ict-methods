@@ -1,6 +1,6 @@
 # ict-methods
 
-A Claude Code (and compatible) agent skill for HBO-ICT research methodology, backed by the [ictresearchmethods.nl](https://ictresearchmethods.nl) standard (HBO-i's DOT framework, method catalogue, and research patterns). Three modes:
+An agent skill for HBO-ICT research methodology, backed by the [ictresearchmethods.nl](https://ictresearchmethods.nl) standard (HBO-i's DOT framework, method catalogue, and research patterns). Three modes:
 
 - **Lookup** — "what is A/B testing?", "what's it called when you compare your product against competitors?": returns the method's full card, no verdict or ranking.
 - **Recommend** — you have a research question or activity but no method yet: matches it against the pattern navigator and ranks candidate methods by phase fit, with rationale and prerequisites.
@@ -52,7 +52,7 @@ cp -r ict-methods <your-project>/.kiro/skills/ict-methods
 A symlink instead of `cp -r` works too, and keeps the skill updated on `git pull`:
 
 ```bash
-ln -s "$(pwd)/ict-methods" ~/.claude/skills/ict-methods
+ln -s "$(pwd)/ict-methods" <your-tool's-skills-dir>/ict-methods
 ```
 
 ## Usage
