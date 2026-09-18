@@ -1,0 +1,62 @@
+# Method index
+
+Flat lookup table for every method card under `methods/` — name, category, phases, and a one-line why. Read this once per session instead of grepping `methods/**/*.md`; only open the linked file when full detail (`how`, `practice`, `ingredients`, `scales`) is actually needed.
+
+| Method | Category | Phases | Why | File |
+|---|---|---|---|---|
+| Joker | extra | problem definition, analysis, design, realisation, evaluation | This set of cards gives you an overview of methods you can use, but there are many others that might fit your goals better. | `methods/extra/joker.md` |
+| Descriptive statistics | field | analysis | To get an overview and summary of a dataset. | `methods/field/descriptive-statistics.md` |
+| Document analysis | field | problem definition, analysis | Documentation produced by the company can be a great first resource for understanding the organisation you are working for and their work processes. | `methods/field/document-analysis.md` |
+| Domain modelling | field | analysis | Map the domain that your product will be part of, so you know the key concepts and the relations between them. | `methods/field/domain-modelling.md` |
+| Exploratory data analysis (ML) | field | machine learning | Find something interesting in the data, check understanding of the domain or problem space, generate new questions based on the data. | `methods/field/exploratory-data-analysis.md` |
+| Explore user requirements | field | analysis | Get a detailed view of how users will be using your solution and what their requirements are. | `methods/field/explore-user-requirements.md` |
+| Focus group | field | analysis | A focus group discussion is an efficient way to gain insight into how people think about an issue, without having to interview each person separately. | `methods/field/focus-group.md` |
+| Human impact score | field | analysis, problem definition | If you create technology you change people and you change how people look at the world. You make moral decisions. Researching how your technology changes people and designing for that change improves the chance for a technology with the intended (positive) impact and with that the acceptance of the technology as a whole | `methods/field/human-impact-score.md` |
+| Interview | field | analysis, problem definition | Learn from potential users of your new product and other stakeholders | `methods/field/interview.md` |
+| Observation | field | problem definition, analysis | Get a feeling for how your intended users will use your product by unobtrusively observing them in their natural environment, doing the things they always do. | `methods/field/observation.md` |
+| Problem analysis | field | problem definition | Before solving a problem, it is important to understand it. Moreover, problem analysis ensures that you are not solving the wrong problem. | `methods/field/problem-analysis.md` |
+| Stakeholder analysis | field | problem definition, analysis | Identify the stakeholders and ensure that their needs are considered. | `methods/field/stakeholder-analysis.md` |
+| Survey | field | problem definition, analysis | Collect information (mostly quantitative) from a large sample of your target group | `methods/field/survey.md` |
+| Task analysis | field | analysis | Understand the structure, flow or other aspects of a certain task. Task analysis focuses on what end users actually do to achieve their goals. | `methods/field/task-analysis.md` |
+| A/B testing | lab | realisation | A minor change in a design may alter user behaviour in ways that are hard to detect in a usability test. An A/B test allows you to compare real-world user behaviour across different versions of a product. | `methods/lab/a-b-testing.md` |
+| Component test | lab | realisation | Test a subsystem or component in isolation to ensure its correctness before integrating it with other components or modules. | `methods/lab/component-test.md` |
+| Computer simulation | lab | realisation | Computer simulations are used when a real-world process, system or event situation is not available or feasible. | `methods/lab/computer-simulation.md` |
+| Data analytics | lab | analysis, design | Gain insights by measuring and analysing data. Researching a dataset can give you useful quantitative information about the topic of interest. | `methods/lab/data-analytics.md` |
+| Data quality check (ML) | lab | machine learning | Ensure that the data you are using is of sufficient quality to base further conclusions on. | `methods/lab/data-quality-check.md` |
+| Hardware validation | lab | realisation | Hardware does not always perform according to its specifications. Hardware validation ensures that the hardware performs as expected and excludes hardware as a source of errors. | `methods/lab/hardware-validation.md` |
+| Inferential statistics | lab | analysis, realisation | To test hypothesis based on a quantitative dataset. | `methods/lab/inferential-statistics.md` |
+| Model evaluation (ML) | lab | machine learning | Verify the correctness and usefulness of the results of your model with the stakeholders or compare different models with respect to their usefulness. | `methods/lab/model-evaluation.md` |
+| Model validation (ML) | lab | machine learning | Ensure that your model produces results of sufficient quality to base your conclusions on. | `methods/lab/model-validation.md` |
+| Non-functional test | lab | realisation | Test the operating conditions under which the system delivers its intended functions. | `methods/lab/non-functional-test.md` |
+| Security test | lab | realisation | Understand the security risks of an IT system. | `methods/lab/security-test.md` |
+| System test | lab | realisation | Solve problems before your system goes into production and demonstrate that the system operates according to its requirements. | `methods/lab/system-test.md` |
+| Unit test | lab | realisation | Find certain types of bugs as early as possible and ensure your code keeps running after a change. | `methods/lab/unit-test.md` |
+| Usability testing | lab | realisation | Detect problems users have with your solution and correct them before the system goes live. | `methods/lab/usability-testing.md` |
+| Available product analysis | library | problem definition | Find out if what you are planning to do has already been done (in full or in part) by someone else. | `methods/library/available-product-analysis.md` |
+| Best good and bad practices | library | analysis, problem definition | Incorporating what has proven to work somewhere else forms the basis of any high-quality project. | `methods/library/best-good-and-bad-practices.md` |
+| Community research | library | design, analysis, realisation | Have others already tackled the problem? Incorporating your peers’ knowledge can seriously speed things up. | `methods/library/community-research.md` |
+| Competitive analysis | library | analysis | Find a niche or unique selling point competitors are not filling. | `methods/library/competitive-analysis.md` |
+| Design pattern research | library | design, realisation | Applying well-known design patterns improves the quality (and structure) of the designed software. | `methods/library/design-pattern-research.md` |
+| Expert interview | library | analysis | A domain expert can put you on the right track when you enter a new domain or field of expertise. The expert can recommend sources, give you a sense of direction or point out common pitfalls. | `methods/library/expert-interview.md` |
+| Literature study | library | design, problem definition, analysis, realisation | Find general information, guidance and best practices. | `methods/library/literature-study.md` |
+| SWOT analysis | library | analysis | A SWOT analysis supports decision makers in identifying relevant factors for achieving certain goals. | `methods/library/swot-analysis.md` |
+| Benchmark test | showroom | realisation | A standardised set allows you to compare your product to similar products. | `methods/showroom/benchmark-test.md` |
+| Ethical check | showroom | problem definition, evaluation | Norms and values differ between various people and societies. Make sure your design and development decisions do not lead to conflicts with certain norms and values. | `methods/showroom/ethical-check.md` |
+| Guideline conformity analysis | showroom | realisation | Conforming to guidelines and standards helps ensure the credibility of the quality of your product and prevents reliability, privacy and security issues. | `methods/showroom/guideline-conformity-analysis.md` |
+| Peer review | showroom | analysis, design, realisation | Colleagues and experts can help improve your work, especially if they need to reuse it. | `methods/showroom/peer-review.md` |
+| Pitch | showroom | problem definition, analysis, design, realisation, evaluation | Get an idea of the unique selling points of the opportunity you have found, or of the idea you have to tackle a problem, and practice concise communication about them. | `methods/showroom/pitch.md` |
+| Product review | showroom | realisation, evaluation | Ensure that the product is perfect before it is released to the client or users. | `methods/showroom/product-review.md` |
+| Static program analysis | showroom | realisation | Get an impression of how well your code is written and quickly find vulnerabilities, weak spots and bad smells. | `methods/showroom/static-program-analysis.md` |
+| Brainstorm | workshop | realisation, problem definition | Generate and develop new ideas. | `methods/workshop/brainstorm.md` |
+| Business case exploration | workshop | problem definition | Maximize the outcome of your efforts or investment. | `methods/workshop/business-case-exploration.md` |
+| Co-creation | workshop | problem definition | To gain inspiration from your users by involving them in the development process. | `methods/workshop/co-creation.md` |
+| Code review | workshop | realisation | With many eyeballs on the code, all bugs are shallow. Colleagues can help you find bugs and improve the quality of your source code. | `methods/workshop/code-review.md` |
+| Decomposition | workshop | design | Breaking a complex IT system or problem into smaller parts ensures its maintainability and robustness, and facilitates cooperation in large-scale software projects. | `methods/workshop/decomposition.md` |
+| Gap analysis | workshop | problem definition, analysis, evaluation | Compare an actual situation to an ideal or desired situation. The gap analysis can be used to create plans to bridge the gaps. | `methods/workshop/gap-analysis.md` |
+| Hackathon | workshop | analysis | To find new solutions, be able to try them out quickly and involve many people in your challenge. | `methods/workshop/hackathon.md` |
+| IT architecture sketching | workshop | design | Defining the IT architecture is complex and requires contributions from and interactions between software designers and/or architects. Sketching facilitates these discussions. | `methods/workshop/it-architecture-sketching.md` |
+| Multi-criteria decision making | workshop | design | Improve the quality of complex decisions | `methods/workshop/multi-criteria-decision-making.md` |
+| Prototyping | workshop | design, realisation | Develop, evaluate or communicate a concept, design or problem solution to make your ideas concrete, to learn whether they work and to discover the technical limitations or possibilities. | `methods/workshop/prototyping.md` |
+| Requirements prioritization | workshop | analysis | To define and weigh the requirements of a new design or redesign, considering the interest of all concerned stakeholders. | `methods/workshop/requirements-prioritization.md` |
+| Root cause analysis | workshop | problem definition, analysis | Understand why a problem occurs and prevent it from happening again. | `methods/workshop/root-cause-analysis.md` |
+| Silicon sampling | workshop | realisation, analysis | Understanding how technology changes people is difficult — many effects are unexpected and not immediately visible. Large Language Models (LLMs) can serve as a tool to broaden perspectives, using their knowledge of cultural, social, and historical patterns found online. By sampling diverse voices and situations through LLM prompts, participants can surface both likely and unlikely consequences of a technology. These insights feed directly into design choices and support more responsible innovation. | `methods/workshop/silicon-sampling.md` |

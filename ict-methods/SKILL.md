@@ -1,6 +1,6 @@
 ---
 name: ict-methods
-description: Checks an HBO-ICT research methodology against the ictresearchmethods.nl standard, or recommends which method(s) fit a research question or activity — validates chosen methods (recognized, phase fit, prerequisites) and/or suggests methods when none are chosen yet.
+description: Works with HBO-ICT research methods against the ictresearchmethods.nl standard — looks up what a method is, recommends which method(s) fit a research question or activity, or validates a chosen methodology (recognized, phase fit, prerequisites).
 disable-model-invocation: true
 ---
 
@@ -8,14 +8,25 @@ disable-model-invocation: true
 
 Works against `references/`, the official HBO-ICT method catalogue mirrored from [ictresearchmethods.nl](https://ictresearchmethods.nl), grounded in the [DOT framework](references/dot-framework.md) (domains, trade-off scales, strategies) and its [research patterns](references/research-pattern-navigator.md). Each file in `references/methods/<category>/<method>.md` is one canonical method with YAML frontmatter (`name`, `why`, `how`, `practice`, `ingredients`, `category`, `phases`, `scales`).
 
+**Start every invocation by reading [`references/index.md`](references/index.md) once** — a flat table of all 56 methods' name/category/phases/why. Do all name-matching, phase-filtering and shortlisting against that table instead of grepping `references/methods/**/*.md` on every check; only open an individual method file once the index has narrowed it to the one or few candidates that need full detail (`how`, `practice`, `ingredients`, `scales`).
+
 **Categories / DOT strategies** (research setting): `field`, `lab`, `library`, `showroom`, `workshop`, `extra`.
 **Phases** (research stage): `problem-definition`, `analysis`, `design`, `realisation`, `evaluation`, plus the cross-cutting `machine-learning`.
 
 ## Pick a mode
 
-- The user names method(s) they've picked or are using, per phase → **Validate**.
-- The user describes a research question or activity without naming a method → **Recommend**.
-- Both at once (e.g. "does X fit, or is there something better?") → run Validate on what's named, then Recommend for the gap.
+- The user asks what a method is, or describes an activity and asks what it's called / what method that is → **Lookup**.
+- The user describes a research question or activity and asks what would fit, without naming a method → **Recommend**.
+- The user names method(s) they've picked or are using, per phase, and wants them checked → **Validate**.
+- More than one at once (e.g. "does X fit, or is there something better?") → run the relevant modes in sequence.
+
+## Lookup
+
+1. **Get the name or description.** A bare method name ("what is A/B testing?") or a description of something they're doing/considering ("what's it called when you compare your product to similar ones?").
+
+2. **Match it against `references/index.md`.** A name matches a row directly (case-insensitive, tolerate near-spellings). A description matches on the row's `Why` column and category. If more than one row plausibly matches, list them instead of guessing one.
+
+3. **Open the matched method file(s)** and report the full card: `why`, `how`, `practice`, `ingredients`, `category`, `phases`. No verdict, no ranking — this mode only answers "what is it".
 
 ## Recommend
 
@@ -23,7 +34,7 @@ Works against `references/`, the official HBO-ICT method catalogue mirrored from
 
 2. **Check for a matching pattern first.** If the question spans more than a single research step (it implies a sequence, e.g. "how do I get from vague stakeholder wishes to a validated solution?"), match it against `references/research-pattern-navigator.md`'s question table. A hit means the recommendation is a pattern, not a single method — read the matching `references/patterns/*.md` file and its How/When/Risks sections.
 
-3. **Rank candidate methods.** Whether or not a pattern matched (a pattern's steps still resolve to individual methods), search `references/methods/**/*.md` (or, if ML-related, `references/machine-learning.md` and the matching `references/machine-learning/<category>-methods.md` first) for methods whose `why`/`practice` address the question's intent. Filter to methods whose `phases` includes the (given or inferred) phase. Rank by fit using the `scales` frontmatter against what the question needs — e.g. a question about validating a hunch needs certainty/data, one about generating options needs overview/inspiration.
+3. **Rank candidate methods.** Whether or not a pattern matched (a pattern's steps still resolve to individual methods), scan `references/index.md` (or, if ML-related, `references/machine-learning.md` and the matching `references/machine-learning/<category>-methods.md` first) for methods whose `Why` addresses the question's intent, filtered to rows whose `Phases` includes the (given or inferred) phase. Open the top 3–5 shortlisted candidates' method files and rank them by their `scales` frontmatter against what the question needs — e.g. a question about validating a hunch needs certainty/data, one about generating options needs overview/inspiration.
 
 4. **Report.** Top pick (or the matched pattern's method sequence) with the `why` it fits, its `ingredients` (what the user needs to have ready), and up to 2 runner-up alternatives with a one-line reason each was ranked lower.
 
@@ -33,9 +44,9 @@ Works against `references/`, the official HBO-ICT method catalogue mirrored from
 
 2. **Look up every named method.**
    - If the project is ML-related, first check `references/machine-learning.md` and the matching `references/machine-learning/<category>-methods.md` (e.g. `lab-methods.md`, `field-methods.md`) for how that strategy adapts to ML. In particular, a named "Data analytics" (Lab) method does not fit ML projects — per `references/machine-learning.md` it decomposes into data collection, exploratory data analysis, data preparation, data quality check, ML model training, model validation, and model evaluation. Look up the ML-specific method cards (exploratory data analysis, data quality check, model validation, model evaluation) in place of the generic Data analytics card; the other three are engineering steps, not research methods, and don't get a verdict.
-   - Grep `references/methods/**/*.md` frontmatter `name:` for a match (case-insensitive, tolerate near-spellings — e.g. "AB testing" → `methods/lab/a-b-testing.md`). Read the matched file's frontmatter.
+   - Match the name against `references/index.md` (case-insensitive, tolerate near-spellings — e.g. "AB testing" → `A/B testing`).
    - No match found → verdict `Not recognized`. Name the closest match by string similarity, or say none exists.
-   - Match found → carry its `category`, `phases`, `ingredients`, and `scales` into the next step.
+   - Match found → open the linked method file and carry its `category`, `phases`, `ingredients`, and `scales` into the next step.
 
 3. **Check phase fit.** Compare the phase the user applied the method to against that method's `phases` list, grounded in `references/dot-framework.md`'s vocabulary rather than the phase list alone:
    - Which domain (application, available work, or innovation) the method actually researches, versus what the phase calls for.
@@ -56,6 +67,6 @@ Works against `references/`, the official HBO-ICT method catalogue mirrored from
    - Combination doesn't match any known pattern → verdict `Unrecognized strategy combination`, pointing at the nearest pattern(s) by shared strategies for comparison.
    - Only a single method or single strategy named → not applicable, skip.
 
-7. **Suggest alternatives per phase.** For each phase in the methodology, grep `references/methods/**/*.md` for other methods whose `phases` includes that phase (for ML-related phases, prefer the ML-specific method cards surfaced in step 2). From those, surface up to 3 the user didn't pick — favor ones in the same `category` as their intended research setting — when their chosen method scored anything other than a clean `Valid` in steps 3–5.
+7. **Suggest alternatives per phase.** For each phase in the methodology, filter `references/index.md` to other methods whose `Phases` includes that phase (for ML-related phases, prefer the ML-specific method cards surfaced in step 2). From those, surface up to 3 the user didn't pick — favor ones in the same `category` as their intended research setting — when their chosen method scored anything other than a clean `Valid` in steps 3–5.
 
 8. **Report.** One row per method the user named: method → verdict(s) from steps 2–5 → the alternatives from step 7 (if any). Add one line for the pattern check from step 6 (pattern matched with any divergence noted, unrecognized combination, or not applicable). Every named method must have reached step 2 and been given an explicit verdict — don't summarize without one.

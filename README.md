@@ -1,9 +1,10 @@
 # ict-methods
 
-A Claude Code (and compatible) agent skill for HBO-ICT research methodology, backed by the [ictresearchmethods.nl](https://ictresearchmethods.nl) standard (HBO-i's DOT framework, method catalogue, and research patterns). Two modes:
+A Claude Code (and compatible) agent skill for HBO-ICT research methodology, backed by the [ictresearchmethods.nl](https://ictresearchmethods.nl) standard (HBO-i's DOT framework, method catalogue, and research patterns). Three modes:
 
-- **Validate** — you've already picked method(s): checks they're recognized, fit their research phase, have their prerequisites covered, and combine into a known pattern.
+- **Lookup** — "what is A/B testing?", "what's it called when you compare your product against competitors?": returns the method's full card, no verdict or ranking.
 - **Recommend** — you have a research question or activity but no method yet: matches it against the pattern navigator and ranks candidate methods by phase fit, with rationale and prerequisites.
+- **Validate** — you've already picked method(s): checks they're recognized, fit their research phase, have their prerequisites covered, and combine into a known pattern.
 
 It only runs when you explicitly type `/ict-methods` — it never auto-triggers on keywords in normal conversation.
 
@@ -13,6 +14,7 @@ It only runs when you explicitly type `/ict-methods` — it never auto-triggers 
 ict-methods/
   SKILL.md                 the skill itself
   references/               bundled knowledge base (no external calls needed)
+    index.md                   flat name/category/phases/why table for all 56 methods — read once per session instead of re-grepping methods/ on every check
     methods/<category>/*.md   56 method cards (field, lab, library, showroom, workshop, extra)
     dot-framework.md          DOT framework theory (domains, trade-off scales, strategies)
     research-pattern-navigator.md   question → pattern lookup table
@@ -59,9 +61,13 @@ ln -s "$(pwd)/ict-methods" ~/.claude/skills/ict-methods
 /ict-methods
 ```
 
-**Validate** — describe your methodology (the method(s) you picked per research phase, and why), or point at a file/paste containing it. The skill looks each method up in `references/methods/`, checks phase fit against the DOT framework, checks prerequisites and justification, checks multi-method combinations against the known research patterns, and reports a verdict per method with alternatives where relevant.
+**Lookup** — ask what a method is, or describe an activity and ask what it's called. The skill matches it in `references/index.md` and returns the full card (why/how/practice/ingredients/phases) — no verdict, just the definition.
 
-**Recommend** — describe the research question or activity instead ("how do I find out what stakeholders actually want?"), with the phase if you know it. The skill checks the pattern navigator for a matching multi-step pattern, ranks candidate methods by phase fit and trade-off scales, and reports a top pick plus alternatives with rationale and prerequisites.
+**Recommend** — describe a research question or activity instead ("how do I find out what stakeholders actually want?"), with the phase if you know it. The skill checks the pattern navigator for a matching multi-step pattern, ranks candidate methods by phase fit and trade-off scales, and reports a top pick plus alternatives with rationale and prerequisites.
+
+**Validate** — describe your methodology (the method(s) you picked per research phase, and why), or point at a file/paste containing it. The skill looks each method up, checks phase fit against the DOT framework, checks prerequisites and justification, checks multi-method combinations against the known research patterns, and reports a verdict per method with alternatives where relevant.
+
+All three modes check `references/index.md` first and only open individual method files for the shortlisted candidates — so a session with several back-to-back questions doesn't re-scan the whole catalogue every time.
 
 ## Attribution
 
