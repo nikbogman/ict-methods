@@ -12,17 +12,30 @@ It only runs when you explicitly type `/ict-methods` — it never auto-triggers 
 
 ```
 ict-methods/
-  SKILL.md                 the skill itself
-  references/               bundled knowledge base (no external calls needed)
-    index.md                   flat name/category/phases/why table for all 56 methods — read once per session instead of re-grepping methods/ on every check
-    methods/<category>/*.md   56 method cards (field, lab, library, showroom, workshop, extra)
-    dot-framework.md          DOT framework theory (domains, trade-off scales, strategies)
-    research-pattern-navigator.md   question → pattern lookup table
-    patterns/*.md              6 research patterns (Why/How/When/Risks/Examples)
-    machine-learning.md + machine-learning/*.md   ML-specific method guidance
+├── SKILL.md
+└── references/
+    ├── index.md
+    ├── dot-framework.md
+    ├── research-pattern-navigator.md
+    ├── methods/
+    │   └── <category>/*.md
+    ├── patterns/
+    │   └── *.md
+    ├── machine-learning.md
+    └── machine-learning/*.md
 ```
 
 `ict-methods/` is self-contained: the skill and everything it reads live under that one folder, so installing it is just copying that folder.
+
+| Path | What it is |
+|---|---|
+| `SKILL.md` | the skill itself |
+| `references/index.md` | flat name/category/phases/why table for all 56 methods — read once per session instead of re-grepping `methods/` on every check |
+| `references/methods/<category>/*.md` | 56 method cards (`field`, `lab`, `library`, `showroom`, `workshop`, `extra`) |
+| `references/dot-framework.md` | DOT framework theory (domains, trade-off scales, strategies) |
+| `references/research-pattern-navigator.md` | question → pattern lookup table |
+| `references/patterns/*.md` | 6 research patterns (Why/How/When/Risks/Examples) |
+| `references/machine-learning.md` + `references/machine-learning/*.md` | ML-specific method guidance |
 
 ## Install
 
